@@ -3,7 +3,7 @@
   <%= link_to 'Повернутись до статей', admins_posts_path, class: "btn btn-light btn-lg" %> 
   <hr>
   <p class="lead"><%= @post_admin.body %></p>
-    <%= image_tag @post_admin.image_url(:thumb).to_s, class: "img-thumbnail float-right", style: "margin: 3px;" %>
+    <%= image_tag @post_admin.image_url(:norm_image).to_s, class: "img-thumbnail float-right", style: "margin: 3px;" %>
   <hr>
   <% if user_signed_in? || admin_signed_in? %>
     <%= render 'disqus' %>
