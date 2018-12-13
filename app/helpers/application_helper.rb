@@ -13,6 +13,18 @@ module ApplicationHelper
     @dashboards = Dashboard.last.title.upcase 
   end
 
+  def dashboard_url_1
+    @dashboards = Dashboard.last.url_1 
+  end
+
+  def dashboard_url_2
+    @dashboards = Dashboard.last.url_2 
+  end
+
+  def dashboard_url_3
+    @dashboards = Dashboard.last.url_3 
+  end
+
   def dashboard_text_1
     @dashboards = Dashboard.last.text_1 
   end

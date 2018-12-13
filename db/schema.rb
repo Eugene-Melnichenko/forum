@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_13_031242) do
+ActiveRecord::Schema.define(version: 2018_12_13_225203) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -35,6 +35,9 @@ ActiveRecord::Schema.define(version: 2018_12_13_031242) do
     t.string "title_text_1"
     t.string "title_text_2"
     t.string "title_text_3"
+    t.string "url_1"
+    t.string "url_2"
+    t.string "url_3"
   end
 
   create_table "post_admins", force: :cascade do |t|

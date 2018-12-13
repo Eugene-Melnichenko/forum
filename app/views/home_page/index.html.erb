@@ -1,13 +1,21 @@
 <div class="container form-style-background">
   <h2 class="text-center"><%= dashboard_logotype %></h2>
+  <h3 class="text-center"><%= dashboard_title_text_1 %></h3>
+  <p class="lead">
+    <%= dashboard_text_1 %>
+  </p>
   <div class="row">
-    <div class="col-12">
-      <h3 class="text-center"><%= dashboard_title_text_1 %></h3>
-        <p class="lead">
-          <iframe width="400px" height="375px" class="img-style float-right"
-          src="https://www.youtube.com/embed/2BOwSOU150g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <%= dashboard_text_1 %>
-      </p>
+    <div class="col-4">
+      <iframe width="100%" height="300px" class="img-style"
+      src=<%= dashboard_url_1 %> frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="col-4">
+      <iframe width="100%" height="300px" class="img-style"
+      src=<%= dashboard_url_2 %> frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="col-4">
+      <iframe width="100%" height="300px" class="img-style"
+      src=<%= dashboard_url_3 %> frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
   </div>
   <hr>
@@ -28,52 +36,26 @@
       <p class="lead">
         <%= dashboard_text_3 %>
       </p>
+      <div class="card-columns">
+        <% @posts_admin.each do |post| %>
+          <div class="card card-style">
+            <div class="card-body">
+              <%= image_tag(post.image_url(:mini_image).to_s, class: "card-img-top") if post.image? %>
+              <h4 class="text-center"><%= post.title %></h4>
+              <p class="card-text lead"><%= post.summary %></p>
+              <%= link_to 'Переглянути', admins_post_path(post), class: "btn btn-outline-light btn-block" %>
+              <% if admin_signed_in? %>
+                <%= link_to 'Редагувати', edit_admins_post_path(post), 
+                  class: "btn btn-outline-success btn-block" %>
+                <%= link_to 'Видалити', admins_post_path(post), 
+                  class: "btn btn-outline-danger btn-block", method: :delete,
+                  data: { confirm: 'Ви впевнені?' } %>
+              <% end %> 
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
 
-
-<div class="card-columns">
-  <div class="card">
-    <%= image_tag("2.gif", class: "card-img-top" ) %>
-    <div class="card-body">
-      <h5 class="card-title">Название карточки, которое завершает новую строкуНазвание карточки, которое завершает новую строку</h5>
-      <p class="card-text">TThis is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longerhis is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    </div>
-  </div>
-  <div class="card">
-    <%= image_tag("2.gif", class: "card-img-top" ) %>
-    <div class="card-body">
-      <h5 class="card-title">Название карточки, которое завершает новую строкуНазвание карточки, которое завершает новую строку</h5>
-      <p class="card-text">TThis is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longerhis is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    </div>
-  </div>
-  <div class="card">
-    <%= image_tag("2.gif", class: "card-img-top" ) %>
-    <div class="card-body">
-      <h5 class="card-title">Название карточки, которое завершает новую строку</h5>
-      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    </div>
-  </div>
-  <div class="card">
-    <%= image_tag("2.gif", class: "card-img-top" ) %>
-    <div class="card-body">
-      <h5 class="card-title">Название карточки, которое завершает новую строку</h5>
-      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    </div>
-  </div>
-  <div class="card">
-    <%= image_tag("2.gif", class: "card-img-top" ) %>
-    <div class="card-body">
-      <h5 class="card-title">Название карточки, которое завершает новую строкуНазвание карточки, которое завершает новую строку</h5>
-      <p class="card-text">TThis is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longerhis is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    </div>
-  </div>
-  <div class="card">
-    <%= image_tag("2.gif", class: "card-img-top" ) %>
-    <div class="card-body">
-      <h5 class="card-title">Название карточки, которое завершает новую строкуНазвание карточки, которое завершает новую строку</h5>
-      <p class="card-text">TThis is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longerhis is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    </div>
-  </div>
 </div>

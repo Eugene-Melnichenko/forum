@@ -23,7 +23,8 @@ class Admins::DashboardsController < ApplicationController
 
   def dashboard_params
     params.require(:dashboard).permit(:logotype, :title, 
-      :text_1, :text_2, :text_3, :title_text_1, :title_text_2, :title_text_3)
+      :text_1, :text_2, :text_3, :title_text_1, :title_text_2, :title_text_3,
+      :url_1, :url_2, :url_3)
   end
 
 end
