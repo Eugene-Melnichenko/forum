@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resource :dashboards, only: [:edit, :update]
+    resources :posts
   end
 
   root 'home_page#index'

@@ -1,0 +1,26 @@
+<div class="container form-style-background">
+
+  <div class="row">
+    <div class="col-12">
+      <h3 class="text-center">Усі створенні статті</h3>
+      <%= link_to 'Створити нову статью', new_admins_post_path, class: "btn btn-outline-info btn-lg" %>
+      <hr>
+      <% @posts_admin.each do |post| %>
+
+      <div class="jumbotron card-style">
+        <h4 class="text-center"><%= post.title %></h1>
+        <p class="lead"><%= post.summary %></p>
+        <hr>
+        <% if admin_signed_in? %>
+          <%= link_to 'Переглянути', admins_post_path(post), class: "btn btn-outline-light btn-lg" %>
+          <%= link_to 'Редагувати', edit_admins_post_path(post), 
+            class: "btn btn-outline-success btn-lg" %>
+          <%= link_to 'Видалити', admins_post_path(post), 
+            class: "btn btn-outline-danger btn-lg", method: :delete,
+            data: { confirm: 'Ви впевнені?' } %>
+        <% end %> 
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

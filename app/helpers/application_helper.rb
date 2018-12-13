@@ -17,12 +17,24 @@ module ApplicationHelper
     @dashboards = Dashboard.last.text_1 
   end
 
+  def dashboard_title_text_1
+    @dashboards = Dashboard.last.title_text_1 
+  end
+
   def dashboard_text_2
     @dashboards = Dashboard.last.text_2
   end
 
+  def dashboard_title_text_2
+    @dashboards = Dashboard.last.title_text_2
+  end
+
   def dashboard_text_3
     @dashboards = Dashboard.last.text_3 
+  end
+
+  def dashboard_title_text_3
+    @dashboards = Dashboard.last.title_text_3
   end
 
   def user_profile
