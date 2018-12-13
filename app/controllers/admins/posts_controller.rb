@@ -20,7 +20,7 @@ class Admins::PostsController < ApplicationController
     @post_admin = PostAdmin.new(post_admin_params)
     if @post_admin.save
       flash[:primary] = "Оголошення успішно створено."
-      redirect_to root_path
+      redirect_to admins_posts_path
     else
       render 'new'
     end
@@ -29,7 +29,7 @@ class Admins::PostsController < ApplicationController
   def update
     if @post_admin.update(post_admin_params)
       flash[:primary] = "Оголошення успішно оновленно."
-      redirect_to root_path
+      redirect_to admins_posts_path
     else
       render 'edit'
     end
@@ -41,7 +41,7 @@ class Admins::PostsController < ApplicationController
     else
       flash[:danger] = "При видалені оголошення виникла помилка."
     end
-    redirect_to root_path
+    redirect_to admins_posts_path
   end
 
   private
@@ -51,6 +51,6 @@ class Admins::PostsController < ApplicationController
   end
 
   def post_admin_params
-    params.require(:post_admin).permit(:title, :summary, :body)
+    params.require(:post_admin).permit(:title, :summary, :body, :image)
   end
 end
