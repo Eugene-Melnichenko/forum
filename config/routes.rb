@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
 
   devise_for :users, path: 'users', controllers: { 
-    sessions: "users/sessions",
-    registrations: "users/registrations",
+    confirmations: "users/confirmations",
     passwords: "users/passwords",
-    confirmations: "users/confirmations"
+    registrations: "users/registrations",
+    sessions: "users/sessions"
   }
   
   devise_for :admins, path: 'admins', controllers: { 
-    sessions: "admins/sessions",
     registrations: "admins/registrations", 
+    sessions: "admins/sessions"
   }
   
   get 'home_page/index'

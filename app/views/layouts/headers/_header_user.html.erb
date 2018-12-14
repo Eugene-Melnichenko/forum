@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top"
- style="background-color: rgba(16, 17, 19, 0.80); >
+ style="background-color: rgba(16, 17, 19, 0.80);" >
   <div class="container">
     <%= link_to dashboard_logotype, root_path, class: "navbar-brand" %>
     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,6 +10,9 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <%= link_to 'Головна сторінка', home_page_index_path, class: "nav-link" %>
+        </li>
+       <li class="nav-item active">
+          <%= link_to 'Усі Статті', admins_posts_path, class: "nav-link" %>
         </li>
       </ul>
 
