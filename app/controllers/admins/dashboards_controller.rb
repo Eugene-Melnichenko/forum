@@ -9,10 +9,10 @@ class Admins::DashboardsController < ApplicationController
   def update
     if @dashboard.update(dashboard_params)
       flash[:primary] = "Оголошення успішно оновленно."
+      redirect_to root_path
     else
       render 'edit'
     end
-      redirect_to root_path
   end
 
   private

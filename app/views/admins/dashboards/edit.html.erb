@@ -1,8 +1,10 @@
-<div class="container form-style-background">
+<div class="container">
   <h3 class="text-center">Редагувати дані на головній сторінці</h3>
 
   <%= form_with(model: @dashboard, url: admins_dashboards_url  ,local: true) do |form| %>
-
+    
+    <%= render 'layouts/error_messages', object: @dashboard %>
+    
     <div class="form-group">
       <%= form.label 'Назва логотипу', class: "lead text-info" %>
       <%= form.text_field :logotype, class: "form-control"  %>

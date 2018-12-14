@@ -1,5 +1,7 @@
 <%= form_with(model: @post_admin, url: adress_url, local: true) do |form| %>
 
+  <%= render 'layouts/error_messages', object: @post_admin %>
+
   <div class="form-group ">
     <%= form.label 'Титульна назва статті', class: "lead text-info" %>
     <%= form.text_field :title, class: "form-control" %>
