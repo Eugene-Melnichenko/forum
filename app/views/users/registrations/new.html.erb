@@ -33,6 +33,10 @@
             </div>
 
             <div class="form-group"">
+              <%= f.file_field :image %>
+            </div>
+
+            <div class="form-group"">
               <%= f.label 'Пароль' %>
               <% if @minimum_password_length %>
                 <em>(<%= @minimum_password_length %> символів мінімум)</em>
