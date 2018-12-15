@@ -1,6 +1,7 @@
 <div class="container">
   <h3 class="text-center">Редагувати статтю</h3>
-
+  <%= link_to 'Повернутись до статей', admins_posts_path, class: "btn btn-light" %>
+  <hr>
   <%= render 'form', adress_url: admins_post_path(@post_admin), 
                      button_text: "Зберегти зміни" %>
 </div>

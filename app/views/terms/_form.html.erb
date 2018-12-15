@@ -1,0 +1,19 @@
+<%= form_with(model: @term, url: adress_url, local: true) do |form| %>
+
+  <%= render 'layouts/error_messages', object: @term %>
+
+  <div class="form-group ">
+    <%= form.label 'Термін', class: "lead text-info" %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label 'Його визначення', class: "lead text-info" %>
+    <%= form.text_area :text, class: "form-control", rows: "5" %>
+  </div>
+
+  <div class="form-group">      
+    <%= form.submit button_text, class: "btn btn-info btn-block btn-lg" %>
+  </div>
+
+<% end %>

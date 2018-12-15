@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   
   get 'home_page/index'
   resources :films
+  resources :terms
 
   namespace :users do
     resources :dashboards, only: [:index]

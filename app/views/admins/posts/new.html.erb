@@ -1,6 +1,7 @@
 <div class="container">
   <h3 class="text-center">Створити нову статтю</h3>
-
+  <%= link_to 'Повернутись до статей', admins_posts_path, class: "btn btn-light" %>
+  <hr>
   <%= render 'form', adress_url: admins_posts_path, 
                      button_text: "Зберегти нову послугу" %>
 

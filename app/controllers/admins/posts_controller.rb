@@ -18,7 +18,6 @@ class Admins::PostsController < ApplicationController
   end
 
   def create
-    @post_admin = PostAdmin.new(post_admin_params)
     if @post_admin.save
       flash[:primary] = "Оголошення успішно створено."
       redirect_to admins_posts_path

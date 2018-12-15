@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="text-center">Глосарій термін, загальна кількість <%= @terms_count %></h3>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-8">
+            <%= form_tag(terms_path, :method => "get", id: "search-form") do %>
+              <div class="row">
+                <div class="col-9">
+                  <%= text_field_tag :search, params[:search], placeholder: "Назва терміну", class: "form-control" %>
+                </div>
+                <div class="col-3">
+                  <%= submit_tag "Знайти", class: "btn btn-info btn-block" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <div class="col-4">
+            <% if admin_signed_in? || user_signed_in? %>
+              <%= link_to 'Створити новий термін', new_term_path, class: "btn btn-primary btn-block" %>
+            <% end %> 
+          </div>
+        </div>
+        <hr>
+        <table class="table table-hover table-dark">
+          <thead>
+            <tr></tr>
+          </thead>
+          <tbody class="text-table">
+            <% @terms.each do |term| %>
+              <tr>
+                <th> 
+                  <strong><%= term.title %></strong> - <%= term.text %>
+                <% if admin_signed_in? %>
+                  <br>
+                  <%= link_to 'Редагувати', edit_term_path(term), 
+                    class: "text-success" %>
+                  <%= link_to 'Видалити', term_path(term), 
+                    class: "text-danger", method: :delete,
+                    data: { confirm: 'Ви впевнені?' } %>
+                <% end %> 
+                </th>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,18 +1,37 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h3 class="text-center">Каталог фільмів</h3>
-      <% if admin_signed_in? || user_signed_in? %>
-        <%= link_to 'Завантажити новий фільм', new_film_path, class: "btn btn-outline-info btn-lg" %>
-      <% end %> 
-      <hr>
+      <h3 class="text-center">Каталог фільмів, кількість <%= @film_count %></h3>
+      <div class="container">
+        <div class="row">
+          <div class="col-8">
+            <%= form_tag(films_path, :method => "get", id: "search-form") do %>
+              <div class="row">
+                <div class="col-9">
+                  <%= text_field_tag :search, params[:search], placeholder: "Назва фільму", class: "form-control" %>
+                </div>
+                <div class="col-3">
+                  <%= submit_tag "Знайти", class: "btn btn-info btn-block" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <div class="col-4">
+            <% if admin_signed_in? || user_signed_in? %>
+              <%= link_to 'Завантажити новий фільм', new_film_path, class: "btn btn-primary btn-block" %>
+            <% end %> 
+          </div>
+        </div>
+      </div>
+
       <div class="container">
         <div class="row">
           <% @films.each do |film| %>
             <div class="col-6">
-              <h5 class="text-center"><%= film.title %></h5>
+              <h5 class="text-center text-uppercase"><%= film.title %></h5>
               <iframe width="100%" height="300px" class="img-style"
               src=<%= film.url %> frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <hr>
                 <%= link_to 'Переглянути', film_path(film), class: "btn btn-outline-light btn-block" %>
                 <% if admin_signed_in? || user_signed_in? %>
                   <%= link_to 'Редагувати', edit_film_path(film), 
@@ -24,8 +43,8 @@
             </div>
           <% end %>
         </div>
-      <hr>
-      <%= will_paginate @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %> 
+        <hr>
+        <%= will_paginate @films, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
       </div>
 
     </div>

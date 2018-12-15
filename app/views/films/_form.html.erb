@@ -16,4 +16,8 @@
     <%= form.submit button_text, class: "btn btn-info btn-block btn-lg" %>
   </div>
   
+  <% if @film.url? %>
+      <iframe width="100%" height="500px" class="img-style"
+      src=<%= @film.url %> frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <% end %>
 <% end %>

@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="text-center"><%= @film.title %></h3>
+      <%= link_to 'Повернутися до списку фільмів', films_path, class: "btn btn-outline-light" %>
+      <hr>
+      <iframe width="100%" height="600px" class="img-style"
+      src=<%= @film.url %> frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <hr>
+      <%= render 'disqus' %>
+    </div>
+  </div>
+</div>

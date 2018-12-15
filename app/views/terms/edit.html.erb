@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="text-center">Створити новий термін</h3>
+      <%= link_to 'Повернутися до списку термінів', terms_path, class: "btn btn-outline-light" %>
+      <hr>
+      <%= render 'form', adress_url: term_path(@term), 
+                         button_text: "Збегети зміни" %>
+    </div>
+  </div>
+</div>

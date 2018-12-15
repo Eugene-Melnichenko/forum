@@ -4,6 +4,7 @@ class Admins::DashboardsController < ApplicationController
   before_action :set_dashboard, only: [:edit, :update] 
   
   def edit
+    @films  = Film.all
   end
 
   def update

@@ -3,7 +3,12 @@ class FilmsController < ApplicationController
   before_action :set_film, only: [:show, :edit, :update, :destroy] 
 
   def index
-    @films = Film.order(created_at: :desc).paginate(:page => params[:page], per_page: 10)
+    if params[:search]
+      @films = Film.search(params[:search]).order("created_at DESC").paginate(:page => params[:page], per_page: 10)
+    else
+      @films = Film.order(created_at: :desc).paginate(:page => params[:page], per_page: 10)
+    end
+    @film_count = Film.count
   end
 
   def show
@@ -29,7 +34,7 @@ class FilmsController < ApplicationController
   def update
     if @film.update(film_params)
       flash[:primary] = "Фільм успішно оновленно."
-      redirect_to films_path
+      redirect_to film_path(@film)
     else
       render 'edit'
     end

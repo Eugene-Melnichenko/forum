@@ -37,25 +37,7 @@
       <p class="lead">
         <%= dashboard_text_3 %>
       </p>
-      <div class="card-columns">
-        <% @posts_admin.each do |post| %>
-          <div class="card card-style">
-            <div class="card-body">
-              <%= image_tag(post.image_url(:mini_image).to_s, class: "card-img-top") if post.image? %>
-              <h4 class="text-center"><%= post.title %></h4>
-              <p class="card-text lead"><%= post.summary %></p>
-              <%= link_to 'Переглянути', admins_post_path(post), class: "btn btn-outline-light btn-block" %>
-              <% if admin_signed_in? %>
-                <%= link_to 'Редагувати', edit_admins_post_path(post), 
-                  class: "btn btn-outline-success btn-block" %>
-                <%= link_to 'Видалити', admins_post_path(post), 
-                  class: "btn btn-outline-danger btn-block", method: :delete,
-                  data: { confirm: 'Ви впевнені?' } %>
-              <% end %> 
-            </div>
-          </div>
-        <% end %>
-      </div>
+
     </div>
   </div>
 
