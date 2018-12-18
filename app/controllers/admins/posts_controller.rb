@@ -4,7 +4,12 @@ class Admins::PostsController < ApplicationController
   before_action :set_post_admin, only: [:show, :edit, :update, :destroy] 
 
   def index
-    @posts_admin = PostAdmin.order(created_at: :desc)
+    if params[:search]
+      @posts_admin = PostAdmin.search(params[:search]).order("created_at DESC")
+    else
+      @posts_admin = PostAdmin.order(created_at: :desc)
+    end
+
   end
 
   def show

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :admins do
+    get 'messages/index'
+  end
+
   devise_for :users, path: 'users', controllers: { 
     confirmations: "users/confirmations",
     passwords: "users/passwords",
@@ -17,7 +21,8 @@ Rails.application.routes.draw do
   resources :terms
 
   namespace :users do
-    resources :dashboards, only: [:index]
+    resources :dashboards
+    resources :messages
   end
 
   namespace :admins do

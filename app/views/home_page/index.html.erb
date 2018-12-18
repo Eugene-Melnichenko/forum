@@ -30,15 +30,22 @@
       </p>
     </div>
   </div>
-  <hr>
-  <div class="row">
-    <div class="col-12">
-      <h3 class="text-center"><%= dashboard_title_text_3 %></h3>
-      <p class="lead">
-        <%= dashboard_text_3 %>
-      </p>
 
+  <% if !admin_signed_in? %>
+    <hr>
+    <div class="row">
+      <div class="col-12">
+        <h3 class="text-center"><%= dashboard_title_text_3 %></h3>
+        <p class="lead">
+          <%= dashboard_text_3 %>
+        </p>
+        <% if user_signed_in? %>
+          <%= link_to 'Надіслати повідомлення адміністратору', new_users_dashboard_path, class: "btn btn-light btn-block" %>
+        <% elsif %>
+          <%= link_to 'Авторизуватися щоб відправити повідомлення адміністратору', new_user_session_path, class: "btn btn-light btn-block" %>
+        <% end %>
+      </div>
     </div>
-  </div>
-
+  <% end %>
+  
 </div>

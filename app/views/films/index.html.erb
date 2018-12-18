@@ -33,7 +33,7 @@
               src=<%= film.url %> frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               <hr>
                 <%= link_to 'Переглянути', film_path(film), class: "btn btn-outline-light btn-block" %>
-                <% if admin_signed_in? || user_signed_in? %>
+                <% if admin_signed_in? %>
                   <%= link_to 'Редагувати', edit_film_path(film), 
                     class: "btn btn-outline-success btn-block" %>
                   <%= link_to 'Видалити', film_path(film), 

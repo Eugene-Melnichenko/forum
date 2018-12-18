@@ -2,9 +2,27 @@
   <div class="row">
     <div class="col-12">
       <h3 class="text-center">Усі створенні статті</h3>
-      <% if admin_signed_in? %>
-        <%= link_to 'Створити нову статью', new_admins_post_path, class: "btn btn-primary" %>
-      <% end %> 
+      <div class="container">
+        <div class="row">
+          <div class="col-8">
+            <%= form_tag(admins_posts_path, :method => "get", id: "search-form") do %>
+              <div class="row">
+                <div class="col-9">
+                  <%= text_field_tag :search, params[:search], placeholder: "Назва cтатті", class: "form-control" %>
+                </div>
+                <div class="col-3">
+                  <%= submit_tag "Знайти", class: "btn btn-info btn-block" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <div class="col-4">
+            <% if admin_signed_in? %>
+              <%= link_to 'Створити нову статью', new_admins_post_path, class: "btn btn-primary  btn-block" %>
+            <% end %> 
+          </div>
+        </div>
+      </div>
       <hr>
       <div class="card-columns">
         <% @posts_admin.each do |post| %>
