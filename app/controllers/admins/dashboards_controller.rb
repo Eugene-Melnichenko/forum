@@ -1,8 +1,13 @@
 class Admins::DashboardsController < ApplicationController
 
   before_action :authenticate_admin!
-  before_action :set_dashboard, only: [:edit, :update] 
+  before_action :set_dashboard, only: [:edit, :update, :destroy] 
   
+  def index
+    @users = User.order(created_at: :desc).paginate(:page => params[:page], per_page: 5)
+    @messages = Message.order(created_at: :desc)
+  end
+
   def edit
     @films  = Film.all
   end

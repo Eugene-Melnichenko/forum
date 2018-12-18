@@ -1,7 +1,12 @@
 class Users::DashboardsController < ApplicationController
+  before_action :authenticate_user!, except: [:destroy]
+
+  def index
+    redirect_to new_users_dashboard_path
+  end
 
   def new
-    @messages = Message.where(user_id: current_user)
+    @messages = Message.where(user_id: current_user).order(created_at: :desc)
     @message = Message.new
   end
 
@@ -22,7 +27,12 @@ class Users::DashboardsController < ApplicationController
     else
       flash[:danger] = "При видалені повідомлення виникла помилка."
     end
-    redirect_to new_users_dashboard_path
+
+    if user_signed_in?
+      redirect_to new_users_dashboard_path
+    elsif admin_signed_in?
+      redirect_to admins_dashboards_index_path
+    end 
   end
 
   private

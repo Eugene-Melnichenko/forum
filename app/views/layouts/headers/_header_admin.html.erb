@@ -11,9 +11,6 @@
         <li class="nav-item active">
           <%= link_to 'Головна сторінка', home_page_index_path, class: "nav-link" %>
         </li>
-        <li class="nav-item active">
-          <%= link_to 'Параметри сторінки', edit_admins_dashboards_path, class: "nav-link" %>
-        </li>
        <li class="nav-item active">
           <%= link_to 'Статті', admins_posts_path, class: "nav-link" %>
         </li>
@@ -23,6 +20,12 @@
         <li class="nav-item active">
           <%= link_to 'Глосарій', terms_path, class: "nav-link" %>
         </li>
+        <li class="nav-item active">
+          <%= link_to 'Налаштування', edit_admins_dashboards_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to 'Дані про користувачів', admins_dashboards_index_path, class: "nav-link" %>
+        </li> 
       </ul>
 
       <ul class="nav navbar-nav pull-right">

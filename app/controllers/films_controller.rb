@@ -1,5 +1,5 @@
 class FilmsController < ApplicationController
-
+  before_action :authenticate_admin!, except: [:index, :show]
   before_action :set_film, only: [:show, :edit, :update, :destroy] 
 
   def index

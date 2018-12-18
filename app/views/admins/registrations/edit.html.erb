@@ -34,9 +34,30 @@
             <span class="text-danger ">
               Деактивних <%= @users_deactive_count %>
             </span>
-
           </div>
         </li> 
+        <br>
+        <li class="list-group-item d-flex justify-content-between lh-condensed card-style">
+          <div>
+            <h6 class="my-0">
+              Фільмів <%= Film.count %>
+            </h6>       
+          </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed card-style">
+          <div>
+            <h6 class="my-0">
+              Статей <%= PostAdmin.count %>
+            </h6>       
+          </div>
+        </li>
+          <li class="list-group-item d-flex justify-content-between lh-condensed card-style">
+          <div>
+            <h6 class="my-0">
+              Термінів <%= Term.count %>
+            </h6>       
+          </div>
+        </li>
       </ul>
     </div>
 

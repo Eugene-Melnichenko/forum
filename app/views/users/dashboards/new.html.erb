@@ -5,10 +5,6 @@
       <div class="container message-style">
         <h3 class="text-center">Переписка з адміністратором сайту</h3>
         <% if @messages.blank?  %>
-          <h4 class="text-center text-danger">
-            У вас в переписці з адміністратором немає жодного повідомлення
-          </h4>
-
         <% else %>
           <% @messages.each do |message| %>
 
@@ -38,7 +34,7 @@
           <% end %> 
         <% end %>
       </div>
-
+      <hr>
     <%= form_with(model: @message, url: users_dashboards_path, local: true) do |form| %>
 
       <%= render 'layouts/error_messages', object: @message %>

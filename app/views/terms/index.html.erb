@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h3 class="text-center">Глосарій термін, загальна кількість <%= @terms_count %></h3>
+      <h3 class="text-center">Глосарій термінів, загальна кількість <%= @terms_count %></h3>
 
       <div class="container">
         <div class="row">
@@ -18,7 +18,7 @@
             <% end %>
           </div>
           <div class="col-4">
-            <% if admin_signed_in? || user_signed_in? %>
+            <% if admin_signed_in? %>
               <%= link_to 'Створити новий термін', new_term_path, class: "btn btn-primary btn-block" %>
             <% end %> 
           </div>

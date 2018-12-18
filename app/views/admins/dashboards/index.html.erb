@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+
+      <h3 class="text-center">Усі користувачі</h3>
+      <table class="table table-bordered text-center">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Користувач активований?</th>
+            <th scope="col">Email</th>
+            <th scope="col">Прізвище</th>
+            <th scope="col">Ім'я</th>
+            <th scope="col">Дата реєстрації</th>
+          </tr>
+        </thead>
+        <tbody style="background-color: white; color: black">
+          <% @users.each do |user| %>
+            <% if !user.confirmed_at? %>
+              <tr class="table-danger">
+            <% else %>
+              <tr>
+            <% end %>
+              <td>
+              <% if user.confirmed_at %>
+                Пошта підтверджена
+              <% else %>
+                <strong>Пошта не підтверджена</strong>
+              <% end %>  
+              </td>
+              <td>
+                <%= user.email %><br>    
+                <%= link_to "Видалити користувача", admins_user_path(user), method: :delete, data: { confirm: "Ви впевнені?" }, 
+                  class: "btn-outline-danger btn-sm" %>
+              </td>
+              <td><%= user.first_name %></td>
+              <td><%= user.last_name %></td>
+              <td><%= user.created_at.strftime("%d:%m:%Y") %></td>
+          <% end %>
+        </tbody>
+      </table>
+      <%= will_paginate @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+      
+      <div class="container message-style">
+        <h3 class="text-center">Усі надісланні повідомлення</h3>
+        <% @messages.each do |message| %>
+          <% if !message.admin %>
+            <div class="row">
+              <div class="col-10">
+                  <strong><%= message.user.first_name%> <%= message.user.last_name%></strong><br>
+                  <%= message.message %>
+              </div>
+              <div class="col-2">
+                <%= link_to 'Видалити повідомлення', users_dashboard_path(message), method: :delete,data: { confirm: 'Ви впевнені?' } %>
+              </div>
+            </div>
+            <hr>
+          <% elsif %>
+            <div class="row text-info">
+              <div class="col-10">
+                  <strong>Адміністратратор</strong><br>
+                  <%= message.message %>
+              </div>
+              <div class="col-2">
+                <%= link_to 'Видалити повідомлення', users_dashboard_path(message), method: :delete,data: { confirm: 'Ви впевнені?' } %>
+              </div>
+            </div>
+            <hr>
+          <% end %>
+        <% end %> 
+      </div>
+      <hr>
+
+
+    </div>
+  </div>
+</div>

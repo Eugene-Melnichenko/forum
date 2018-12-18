@@ -1,5 +1,5 @@
 class TermsController < ApplicationController
-
+  before_action :authenticate_admin!, except: [:index, :show]
   before_action :set_term, only: [:edit, :update, :destroy] 
 
   def index
